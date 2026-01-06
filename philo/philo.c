@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:16:35 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/05 23:52:35 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/06 00:01:22 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int argc, char **argv)
 }
 
 // TO DO:
-// NORMA
 // TESTE DE ESTRESSE
 // VALIDACOES
 // testar com o limite de comida
