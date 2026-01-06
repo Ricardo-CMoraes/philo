@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:16:35 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/04 22:47:49 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/04 23:01:17 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 // printf("time_to_sleep: %ld\n", settings.time_to_sleep);
 // if (argc == 6)
 // 	printf("[number_of_times_each_philosopher_must_eat]: %d\n", settings.times_must_eat);
+// Entregar no diretorio philo
 	  
 
 // int i = 0;
