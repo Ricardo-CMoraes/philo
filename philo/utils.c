@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:42:00 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/04 21:53:13 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:20:43 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,46 +39,42 @@ int	ft_atoi(const char *str)
 	return (nb * sign);
 }
 
-long get_time_ms(void)
+long	get_time_ms(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void print_action(t_philo *philo, const char *msg)
+void	print_action(t_philo *philo, const char *msg)
 {
 	pthread_mutex_lock(&(philo->settings->write_lock));
 	if (!is_simulation_over(philo))
-		printf("%ld %d %s\n", get_time_ms() - philo->settings->start_time, philo->id, msg);
-	pthread_mutex_unlock(&(philo->settings->write_lock)); 
+		printf("%ld %d %s\n",
+			get_time_ms() - philo->settings->start_time, philo->id, msg);
+	pthread_mutex_unlock(&(philo->settings->write_lock));
 }
 
-void precise_usleep(long time_to_wait, t_philo *philo)
+void	precise_usleep(long time_to_wait, t_philo *philo)
 {
-    long start_time;
+	long	start_time;
 
-    start_time = get_time_ms();
-    while ((get_time_ms() - start_time) < time_to_wait)
-    {
-        if (is_simulation_over(philo))
-            break;
-        usleep(500);
-    }
+	start_time = get_time_ms();
+	while ((get_time_ms() - start_time) < time_to_wait)
+	{
+		if (is_simulation_over(philo))
+			break ;
+		usleep(500);
+	}
 }
 
-int is_simulation_over(t_philo *p)
+int	is_simulation_over(t_philo *p)
 {
-    int stopped;
+	int	stopped;
 
-    pthread_mutex_lock(&p->settings->stop_lock);
-    stopped = p->settings->simulation_stopped;
-    pthread_mutex_unlock(&p->settings->stop_lock);
-    return (stopped);
+	pthread_mutex_lock(&p->settings->stop_lock);
+	stopped = p->settings->simulation_stopped;
+	pthread_mutex_unlock(&p->settings->stop_lock);
+	return (stopped);
 }
-//has taken a fork
-//is eating
-//is sleeping
-//is thinking
-//diead

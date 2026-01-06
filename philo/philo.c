@@ -6,21 +6,19 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:16:35 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/04 23:01:17 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/05 23:52:35 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_settings		settings;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
 
-	if (argc != 5 && argc != 6)
-		return (write(2, "Error: Wrong number of argument\n", 33));
-	if (check_args(argv))
+	if (check_args(argc, argv))
 		return (1);
 	init_settings(&settings, argc, argv);
 	forks = init_forks(&settings);
@@ -37,12 +35,12 @@ int main(int argc, char **argv)
 		clean_all(philo, forks);
 		return (write(2, "Error: Fail thread initialization\n", 35));
 	}
-	monitor_routine(philo);
+	monitor_routine(philo, 0);
 	clean_all(philo, forks);
 	return (0);
 }
 
-// TO DO
+// TO DO:
 // NORMA
 // TESTE DE ESTRESSE
 // VALIDACOES
@@ -57,9 +55,8 @@ int main(int argc, char **argv)
 // printf("time_to_eat: %ld\n", settings.time_to_eat);
 // printf("time_to_sleep: %ld\n", settings.time_to_sleep);
 // if (argc == 6)
-// 	printf("[number_of_times_each_philosopher_must_eat]: %d\n", settings.times_must_eat);
-// Entregar no diretorio philo
-	  
+// 	printf("[number_of_times_each_philosopher_must_eat]: %d\n", 
+//			settings.times_must_eat);  
 
 // int i = 0;
 // while (i < settings.n_philos)
@@ -72,7 +69,6 @@ int main(int argc, char **argv)
 // 	printf("\tsecond_fork: %p\n", philo[i].second_fork);
 // 	i++;
 // }
-
 
 // philo->settings->start_time = philo[0].last_meal_time;
 // usleep(5000000);

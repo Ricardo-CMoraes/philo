@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:44:42 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/03 18:34:45 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/05 23:51:59 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int	is_number(char *arg)
 	return (1);
 }
 
-int	check_args(char **argv)
+int	check_args(int argc, char **argv)
 {
+	if (argc != 5 && argc != 6)
+		return (write(2, "Error: Wrong number of argument\n", 33));
 	if (ft_atoi(argv[1]) > PHILO_MAX || !(is_number(argv[1]))
-        || ft_atoi(argv[1]) <= 0)
+		|| ft_atoi(argv[1]) <= 0)
 		return (write(2, "Invalid number of philosophers\n", 32), 1);
 	if (ft_atoi(argv[2]) <= 0 || !(is_number(argv[2])))
 		return (write(2, "Invalid time to die\n", 21), 1);
