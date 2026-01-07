@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:32:25 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/05 22:51:37 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/06 22:43:13 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	init_settings(t_settings *settings, int argc, char **argv)
 	settings->time_to_eat = (long)(ft_atoi(argv[3]));
 	settings->time_to_sleep = (long)(ft_atoi(argv[4]));
 	if (argc == 6)
-		settings->times_must_eat = (int)(ft_atoi(argv[5]));
+		settings->meal_count = (int)(ft_atoi(argv[5]));
 	else
-		settings->times_must_eat = -1;
+		settings->meal_count = -1;
 	pthread_mutex_init(&settings->write_lock, NULL);
 	pthread_mutex_init(&settings->stop_lock, NULL);
 	settings->simulation_stopped = 0;

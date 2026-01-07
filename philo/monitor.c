@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 20:04:26 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/05 22:15:42 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/07 00:20:10 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,28 @@ int	is_philo_dead(t_philo *philo)
 	return (0);
 }
 
-void	monitor_routine(t_philo *philo, int i)
+void	monitor_routine(t_philo *philo, int n_philos, int i)
 {
 	long	finished_eating;
 
 	while (1)
 	{
+		finished_eating = 0;
 		i = 0;
-		while (i < philo[0].settings->n_philos)
+		while (i < n_philos)
 		{
 			if (is_philo_dead(&philo[i]))
 				return ;
-			if (philo[i].settings->times_must_eat != -1)
+			if (philo[i].settings->meal_count != -1)
 			{
 				pthread_mutex_lock(&philo[i].settings->stop_lock);
-				if (philo[i].meals_eaten >= philo[i].settings->times_must_eat)
+				if (philo[i].meals_eaten >= philo[i].settings->meal_count)
 					finished_eating++;
 				pthread_mutex_unlock(&philo[i].settings->stop_lock);
 			}
 			i++;
 		}
-		if (philo[0].settings->times_must_eat != -1
-			&& finished_eating == philo[0].settings->n_philos)
+		if (philo[0].settings->meal_count != -1 && finished_eating == n_philos)
 		{
 			set_simulation_stop(&philo[0]);
 			return ;

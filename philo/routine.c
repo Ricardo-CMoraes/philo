@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 16:33:08 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/06 00:12:08 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/06 23:21:40 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	*routine(void *arg)
 	{
 		eat_routine(philo);
 		sleep_routine(philo);
-		print_action(philo, "is thinking");
 		print_action(philo, "is thinking");
 		if (philo->settings->n_philos % 2 != 0)
 			precise_usleep(1, philo);

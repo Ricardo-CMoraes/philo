@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:19:47 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/05 23:57:18 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/07 00:20:26 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_settings
 	long			time_to_die;
 	long			time_to_eat;
 	long			time_to_sleep;
-	int				times_must_eat;
+	int				meal_count;
 	long			start_time;
 	pthread_mutex_t	write_lock;
 	pthread_mutex_t	stop_lock;
@@ -72,6 +72,5 @@ void			*routine(void *arg);
 //monitor
 void			set_simulation_stop(t_philo *p);
 int				is_philo_dead(t_philo *philo);
-void			monitor_routine(t_philo *philo, int i);
-
+void			monitor_routine(t_philo *philo, int n_philos, int i);
 #endif

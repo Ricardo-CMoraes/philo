@@ -6,7 +6,7 @@
 /*   By: rida-cos <ric.costamoraes@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:16:35 by rida-cos          #+#    #+#             */
-/*   Updated: 2026/01/06 00:01:22 by rida-cos         ###   ########.fr       */
+/*   Updated: 2026/01/07 00:17:12 by rida-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,15 @@ int	main(int argc, char **argv)
 		clean_all(philo, forks);
 		return (write(2, "Error: Fail thread initialization\n", 35));
 	}
-	monitor_routine(philo, 0);
+	monitor_routine(philo, settings.n_philos, 0);
 	clean_all(philo, forks);
 	return (0);
 }
 
 // TO DO:
 // TESTE DE ESTRESSE
-// VALIDACOES
-// testar com o limite de comida
 // LEAK
 // RODAR COM A FLAG
-// FAZER MAKEFILE
 // estudar e demonstrar porque e necesspario o think delay quando e impar.
 
 // printf("number_of_philosophers: %d\n", settings.n_philos);
