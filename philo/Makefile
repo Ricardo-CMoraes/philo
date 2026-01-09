@@ -3,6 +3,8 @@ NAME = philo
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
 
+LIBS = -pthread
+
 SRC = clean.c \
 	init.c \
 	monitor.c \
@@ -16,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) 
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
